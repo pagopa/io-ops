@@ -20,6 +20,9 @@ jobs:
           name: Generate
           command: yarn generate
       - run:
+          name: Generate
+          command: yarn generate
+      - run:
           name: Testing
           command: yarn test
       - run:

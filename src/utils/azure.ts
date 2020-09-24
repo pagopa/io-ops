@@ -11,9 +11,11 @@ export interface IAzureConfig {
   cosmosNotificationContainer: string;
   cosmosNotificationStatusContainer: string;
   cosmosServicesContainer: string;
+  cosmosUserBonusesContainer: string;
   cosmosName: string;
   resourceGroup: string;
   storageMessagesContainer: string;
+  storageBonusRedeemedContainer: string;
   storageName: string;
 }
 
@@ -26,35 +28,69 @@ export const agid: IAzureConfig = {
   cosmosNotificationStatusContainer: "notification-status",
   cosmosProfilesContainer: "profiles",
   cosmosServicesContainer: "services",
+  cosmosUserBonusesContainer: "user-bonuses",
   cosmosName: "agid-cosmosdb-test",
   resourceGroup: "agid-rg-test",
   storageMessagesContainer: "message-content",
+  storageBonusRedeemedContainer: "",
   storageName: "agidstoragetest"
 };
 
 export const dev: IAzureConfig = {
-  configName: "io-dev-aks-k8s-01",
-  cosmosDatabaseName: "io-dev-sqldb-db-01",
+  configName: "io-d",
+  cosmosDatabaseName: "db",
   cosmosMessagesContainer: "messages",
   cosmosMessageStatusContainer: "message-status",
   cosmosNotificationContainer: "notifications",
   cosmosNotificationStatusContainer: "notification-status",
   cosmosProfilesContainer: "profiles",
   cosmosServicesContainer: "services",
-  cosmosName: "io-dev-cosmosdb-01",
-  resourceGroup: "io-dev-rg",
+  cosmosUserBonusesContainer: "user-bonuses",
+  cosmosName: "io-d-cosmos-free",
+  resourceGroup: "io-d-rg-common",
   storageMessagesContainer: "message-content",
-  storageName: "iodevsaappdata"
+  storageBonusRedeemedContainer: "redeemed-request",
+  storageName: "iodsttest"
 };
+
+export const prod: IAzureConfig = {
+  configName: "io-p",
+  cosmosDatabaseName: "db",
+  cosmosMessagesContainer: "",
+  cosmosMessageStatusContainer: "",
+  cosmosNotificationContainer: "",
+  cosmosNotificationStatusContainer: "",
+  cosmosProfilesContainer: "",
+  cosmosServicesContainer: "",
+  cosmosUserBonusesContainer: "",
+  cosmosName: "io-p-cosmos-api",
+  resourceGroup: "io-p-rg-internal",
+  storageMessagesContainer: "",
+  storageBonusRedeemedContainer: "",
+  storageName: ""
+};
+
+export const prod_bonus: IAzureConfig = {
+  configName: "io-p",
+  cosmosDatabaseName: "db",
+  cosmosMessagesContainer: "",
+  cosmosMessageStatusContainer: "",
+  cosmosNotificationContainer: "",
+  cosmosNotificationStatusContainer: "",
+  cosmosProfilesContainer: "",
+  cosmosServicesContainer: "",
+  cosmosUserBonusesContainer: "user-bonuses",
+  cosmosName: "io-p-cosmos-bonus",
+  resourceGroup: "io-p-rg-internal",
+  storageMessagesContainer: "",
+  storageBonusRedeemedContainer: "redeemed-requests",
+  storageName: "iopstbonus"
+};
+
 interface IConfigs {
   [key: string]: IAzureConfig;
 }
-const configs: IConfigs = { agid, dev };
-
-const getCredentials = async (config: IAzureConfig) =>
-  await execa(
-    `az aks get-credentials -n ${config.configName} -g ${config.resourceGroup}  --overwrite-existing`
-  );
+const configs: IConfigs = { agid, dev, prod, prod_bonus };
 
 export const pickAzureConfig = async (): Promise<IAzureConfig> => {
   const options = Object.keys(configs)
@@ -79,7 +115,6 @@ export const pickAzureConfig = async (): Promise<IAzureConfig> => {
       }' config...`
     )
   );
-  await getCredentials(config);
   cli.action.stop();
   return config;
 };

@@ -10,3 +10,4 @@ node_modules
 tsconfig.tsbuildinfo
 /src/generated
 /.idea/
+tmp/

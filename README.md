@@ -53,6 +53,7 @@ USAGE
 * [`io-ops api-services:keys-regenerate SERVICEID`](#io-ops-api-serviceskeys-regenerate-serviceid)
 * [`io-ops api-services:logo SERVICEID`](#io-ops-api-serviceslogo-serviceid)
 * [`io-ops api-services:update`](#io-ops-api-servicesupdate)
+* [`io-ops bonuses-bv:redeem-bonuses`](#io-ops-bonuses-bvredeem-bonuses)
 * [`io-ops hello`](#io-ops-hello)
 * [`io-ops help [COMMAND]`](#io-ops-help-command)
 * [`io-ops messages:attributes`](#io-ops-messagesattributes)
@@ -198,6 +199,28 @@ EXAMPLE
 ```
 
 _See code: [src/commands/api-services/update.ts](https://github.com/teamdigitale/io-ops/blob/v0.2.0/src/commands/api-services/update.ts)_
+
+## `io-ops bonuses-bv:redeem-bonuses`
+
+Reprocess redeemed bonuses in the specified day
+
+```
+USAGE
+  $ io-ops bonuses-bv:redeem-bonuses
+
+OPTIONS
+  --apiKey=apiKey      (required) bonus vacanze api key
+  --apiUrl=apiUrl      [default: https://api.io.italia.it/api/bonus-vacanze/v1/redeemed] bonus vacanze api url
+
+  --day=day            (required) filter redeemed request from specified day (utc timezone, required format yyyy-MM-dd,
+                       ie 2020-05-25)
+
+  --fromTime=fromTime  filter redeemed request from specified time (utc timezone, required format HH:mm, ie 09:45)
+
+  --toTime=toTime      filter redeemed request to specified time (utc timezone, required format HH:mm, ie 15:35)
+```
+
+_See code: [src/commands/bonuses-bv/redeem-bonuses.ts](https://github.com/teamdigitale/io-ops/blob/v0.2.0/src/commands/bonuses-bv/redeem-bonuses.ts)_
 
 ## `io-ops hello`
 

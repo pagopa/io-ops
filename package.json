@@ -25,7 +25,7 @@
     "csv-stringify": "^5.3.0",
     "dotenv": "^8.2.0",
     "execa": "sindresorhus/execa#0d39fdffeb053215a56a631db8d2cf32ea119a95",
-    "fp-ts": "1.12.0",
+    "fp-ts": "1.19.5",
     "image-size": "0.7.4",
     "io-functions-commons": "^14.6.0",
     "io-ts": "1.8.5",

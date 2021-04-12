@@ -19,13 +19,14 @@ IO operations tool
 # Requirements
 
 ### Environment variables
+
 The following sets of commands require the environment variabiles listed in the table below:
 `api-services:*`, `users:*`, `migrate-service`.
 
-| Variable name                     | Description                                                                       | type   |
-|-----------------------------------|-----------------------------------------------------------------------------------|--------|
-| BASE_URL_ADMIN                    | The URL of the admin functions API                                                | string |
-| OCP_APIM                          | The key used to authenticate to the admin functions API                           | string |
+| Variable name  | Description                                             | type   |
+| -------------- | ------------------------------------------------------- | ------ |
+| BASE_URL_ADMIN | The URL of the admin functions API                      | string |
+| OCP_APIM       | The key used to authenticate to the admin functions API | string |
 
 # Usage
 
@@ -35,7 +36,7 @@ $ npm install -g io-ops
 $ io-ops COMMAND
 running command...
 $ io-ops (-v|--version|version)
-io-ops/0.2.0 darwin-x64 node-v10.13.0
+io-ops/0.2.0 darwin-x64 node-v12.18.0
 $ io-ops --help [COMMAND]
 USAGE
   $ io-ops COMMAND
@@ -64,6 +65,7 @@ USAGE
 * [`io-ops profiles:list`](#io-ops-profileslist)
 * [`io-ops services:check`](#io-ops-servicescheck)
 * [`io-ops services:details`](#io-ops-servicesdetails)
+* [`io-ops services:export`](#io-ops-servicesexport)
 * [`io-ops services:list`](#io-ops-serviceslist)
 * [`io-ops users:create`](#io-ops-userscreate)
 * [`io-ops users:get EMAIL`](#io-ops-usersget-email)
@@ -386,13 +388,53 @@ OPTIONS
 
 _See code: [src/commands/services/details.ts](https://github.com/teamdigitale/io-ops/blob/v0.2.0/src/commands/services/details.ts)_
 
+## `io-ops services:export`
+
+Export visible services
+
+```
+USAGE
+  $ io-ops services:export
+
+OPTIONS
+  -s, --scope=NATIONAL|LOCAL|ALL  [default: ALL] The service scope metadata
+  -x, --extended                  show extra columns
+
+  --date=date                     filter services from specified day (Europe/Rome timezone, required format yyyy-MM-dd,
+                                  ie 2020-05-25)
+```
+
+_See code: [src/commands/services/export.ts](https://github.com/teamdigitale/io-ops/blob/v0.2.0/src/commands/services/export.ts)_
+
 ## `io-ops services:list`
 
-List all services in csv format
+Lists all services
 
 ```
 USAGE
   $ io-ops services:list
+
+OPTIONS
+  -x, --extended                 show extra columns
+  --columns=columns              only show provided columns (comma-separated)
+  --csv                          output is csv format [alias: --output=csv]
+
+  --date=date                    filter services from specified day (Europe/Rome timezone, required format yyyy-MM-dd,
+                                 ie 2020-05-25)
+
+  --filter=filter                filter property by partial string matching, ex: name=foo
+
+  --no-header                    hide table header from output
+
+  --no-truncate                  do not truncate output to fit screen
+
+  --only_services=only_services  [default: false] get only services data
+
+  --output=csv|json|yaml         output in a more machine friendly format
+
+  --sort=sort                    property to sort by (prepend '-' for descending)
+
+  --visible=visible              [default: true] get only visible services data
 ```
 
 _See code: [src/commands/services/list.ts](https://github.com/teamdigitale/io-ops/blob/v0.2.0/src/commands/services/list.ts)_

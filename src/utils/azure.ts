@@ -46,15 +46,25 @@ export const dev: IAzureConfig = {
   storageMessagesContainer: "message-content",
   storageName: "iodevsaappdata"
 };
+
+export const prod: IAzureConfig = {
+  configName: "io-p-cosmos-api",
+  cosmosDatabaseName: "db",
+  cosmosMessagesContainer: "messages",
+  cosmosMessageStatusContainer: "message-status",
+  cosmosNotificationContainer: "notifications",
+  cosmosNotificationStatusContainer: "notification-status",
+  cosmosProfilesContainer: "profiles",
+  cosmosServicesContainer: "services",
+  cosmosName: "io-p-cosmos-api",
+  resourceGroup: "io-p-rg-internal",
+  storageMessagesContainer: "message-content",
+  storageName: ""
+};
 interface IConfigs {
   [key: string]: IAzureConfig;
 }
-const configs: IConfigs = { agid, dev };
-
-const getCredentials = async (config: IAzureConfig) =>
-  await execa(
-    `az aks get-credentials -n ${config.configName} -g ${config.resourceGroup}  --overwrite-existing`
-  );
+const configs: IConfigs = { agid, dev, prod };
 
 export const pickAzureConfig = async (): Promise<IAzureConfig> => {
   const options = Object.keys(configs)
@@ -79,7 +89,6 @@ export const pickAzureConfig = async (): Promise<IAzureConfig> => {
       }' config...`
     )
   );
-  await getCredentials(config);
   cli.action.stop();
   return config;
 };

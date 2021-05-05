@@ -4,10 +4,10 @@ IO operations tool
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/io-ops.svg)](https://npmjs.org/package/io-ops)
-[![CircleCI](https://circleci.com/gh/teamdigitale/io-ops/tree/master.svg?style=shield)](https://circleci.com/gh/teamdigitale/io-ops/tree/master)
-[![Codecov](https://codecov.io/gh/teamdigitale/io-ops/branch/master/graph/badge.svg)](https://codecov.io/gh/teamdigitale/io-ops)
+[![CircleCI](https://circleci.com/gh/pagopa/io-ops/tree/master.svg?style=shield)](https://circleci.com/gh/teamdigitale/io-ops/tree/master)
+[![Codecov](https://codecov.io/gh/pagopa/io-ops/branch/master/graph/badge.svg)](https://codecov.io/gh/teamdigitale/io-ops)
 [![Downloads/week](https://img.shields.io/npm/dw/io-ops.svg)](https://npmjs.org/package/io-ops)
-[![License](https://img.shields.io/npm/l/io-ops.svg)](https://github.com/teamdigitale/io-ops/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/io-ops.svg)](https://github.com/pagopa/io-ops/blob/master/package.json)
 
 <!-- toc -->
 * [io-ops](#io-ops)

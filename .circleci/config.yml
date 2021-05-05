@@ -16,7 +16,7 @@ jobs:
           command: yarn
       - run: ./bin/run --version
       - run: ./bin/run --help
-      - run: 
+      - run:
           name: Generate
           command: yarn generate
       - run:
@@ -24,9 +24,7 @@ jobs:
           command: yarn test
       - run:
           name: Submitting code coverage to codecov
-          command: |
-            ./node_modules/.bin/nyc report --reporter text-lcov > coverage.lcov
-            curl -s https://codecov.io/bash | bash
+          command: ./scripts/codecov.sh
   node-8:
     <<: *test
     docker:
